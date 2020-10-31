@@ -7,11 +7,3 @@ export const AuthPayload = objectType({
         t.field("user", { type: "User" });
     }
 });
-
-/**
- * pleaseEnterSomethingHere
- */
-enterSomethingHere = (name: string) => {
-    console.log("Entersomething");
-    
-}
