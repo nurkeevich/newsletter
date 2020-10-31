@@ -2,8 +2,17 @@
 ### Do not make changes to this file directly
 
 
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
 type Mutation {
-  signupUser(data: UserCreateInput!): User!
+  """Sign in user"""
+  SignIn(email: String!, password: String!): AuthPayload!
+
+  """Sign up user"""
+  SignUp(email: String!, name: String, password: String!): AuthPayload!
 }
 
 type Query {
@@ -14,10 +23,4 @@ type User {
   email: String!
   id: Int!
   name: String
-}
-
-input UserCreateInput {
-  email: String!
-  name: String
-  password: String!
 }

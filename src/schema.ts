@@ -1,24 +1,9 @@
-import { intArg, makeSchema, objectType, stringArg } from "@nexus/schema";
+import { makeSchema } from "@nexus/schema";
 import { nexusPrismaPlugin } from "nexus-prisma";
-
-const User = objectType({
-    name: "User",
-    definition(t) {
-        t.model.id();
-        t.model.name();
-        t.model.email();
-    }
-});
-
-const Mutation = objectType({
-    name: "Mutation",
-    definition(t) {
-        t.crud.createOneUser({ alias: "signupUser" });
-    }
-});
+import * as types from "./types";
 
 export const schema = makeSchema({
-    types: [Mutation, User],
+    types,
     plugins: [nexusPrismaPlugin()],
     outputs: {
         schema: __dirname + "/../schema.graphql",
